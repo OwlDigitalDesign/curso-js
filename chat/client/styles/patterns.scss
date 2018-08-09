@@ -1,0 +1,217 @@
+@import 'animations';
+
+$main-color: #6646dd;
+$main-color-darker: #593dbe;
+$main-color-darkest: #402b88;
+$main-color-lighter: #7454e7;
+$main-color-lightest: #987cff;
+
+* {
+	padding: 0;
+	margin: auto;
+	outline: none;
+	text-align: center;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+}
+body {
+	color: #333;
+	font-size: 16px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+a {
+	color: inherit;
+	cursor: pointer;
+	text-decoration: inherit;
+}
+p {
+	margin: 1em auto;
+}
+.img {
+	display: inline-block;
+	vertical-align: middle;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.img.white-round {
+	border-radius: 50% !important;
+	background-color: #fff !important;
+}
+.no-interact {cursor: default !important;}
+.entity-icon {
+	font-size: inherit;
+	display: inline-block;
+	font-family: monospace;
+}
+.wide-limit {
+	width: 90%;
+	max-width: 1200px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.text .separator {
+	margin:auto 15px;
+	vertical-align: top;
+	display: inline-block;
+}
+.m-icon {
+    color: inherit;
+    font-size: 26px;
+	display: inline-flex;
+
+	&:before {
+		content: attr(content);
+		margin: auto;
+		color: inherit;
+		line-height: 1;
+		direction: ltr;
+		word-wrap: normal;
+		font-size: inherit;
+		font-style: normal;
+		font-weight: normal;
+		white-space: nowrap;
+		text-transform: none;
+		display: inline-block;
+		letter-spacing: normal;
+		font-family: 'Material Icons';
+	}
+}
+
+label {
+    width: 100%;
+    color: #333;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 5px;
+    display: inline-block;
+    font-variant: small-caps;
+    text-transform: lowercase;
+}
+input,
+textarea,
+button {
+	width: 100%;
+	color: #555;
+	font-size: 18px;
+	text-align: left;
+	font-weight: 400;
+	margin-bottom: 0;
+	padding: 10px 15px;
+	font-variant: small-caps;
+	border: #ccc 1px solid;
+	text-transform: lowercase;
+	background-color: #fafafa;
+	transition: all 100ms linear;
+
+	&.error {
+		margin-bottom: 25px;
+		border-color: #cc6769;
+		box-shadow: 0 0 3px #d71d3f;
+
+		& + .error-box {
+			margin-top: -16px !important;
+		}
+	}
+}
+.error-box {
+	left: 0;
+	opacity: 0;;
+	color: #d71d1d;
+	font-size: 14px;
+	text-align: left;
+	position: absolute;
+	display: inline-block;
+	transform-origin: top;
+	font-variant: small-caps;
+	transform: scale3d(0,0,0);
+	text-transform: lowercase;
+	transition: all 50ms linear;
+
+	&.show {
+		opacity: 1;
+		transform: scale3d(1,1,1);
+	}
+}
+button {
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 20px;
+	position: relative;
+	text-align: center;
+	padding: 13px 0 16px;
+	font-variant: small-caps;
+	text-transform: lowercase;
+	background-color: #6646dd;
+	box-shadow: inset 0 -3px 0 rgba(0,0,0,0.4);
+	transition: all 100ms linear;
+	will-change: box-shadow;
+	
+	&:hover,
+	&:focus {
+		background-color: $main-color-darker;
+		box-shadow: inset 0 -1px 0 rgba(50,50,50,0.4);
+	}
+	&[disabled],
+	&:active {
+		background-color: $main-color-lighter;
+		box-shadow: inset 0 -1px 0 rgba(50,50,50,0.4);
+	}
+}
+.loading {
+	cursor: wait;
+
+	& * {
+		cursor: wait !important;
+	}
+
+	button {
+		color: transparent;
+		cursor: not-allowed !important;
+		background-color: $main-color-lighter;
+		box-shadow: inset 0 -1px 0 rgba(50,50,50,0.4);
+
+		&:after {
+			content: '';
+			top:50%;
+			left: 50%;
+			width: 15px;
+			height: 15px;
+			display: block;
+			margin-top: -14px;
+			margin-left: -13px;
+			border-radius: 50%;
+			position: absolute;
+			border: #fff 6px solid;
+			border-top-color: transparent;
+			animation: rotating 500ms linear infinite;
+		}
+	}
+}
+.align-left {
+    text-align: left;
+    & * {
+        text-align: inherit;
+    }
+}.align-right {
+    text-align: right;
+    & * {
+        text-align: inherit;
+    }
+}.align-center {
+    text-align: center;
+    & * {
+        text-align: inherit;
+    }
+}.align-justify {
+    text-align: justify;
+    & * {
+        text-align: inherit;
+    }
+}

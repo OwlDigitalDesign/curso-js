@@ -1,0 +1,263 @@
+@import 'patterns';
+
+body {
+    color: #333;
+    display: flex;
+    overflow: hidden;
+    background-color: #666;
+    
+    &:before {
+        content: '';
+        top:0;
+        left:0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: 0.6;
+        display: block;
+        position: absolute;
+        background-size: cover;
+        background-position: center;
+        background-image: url('../assets/milky-way-starry-sky-night-sky-star-956999.jpeg');
+    }
+} 
+h1 {
+    font-size: 30px;
+    text-align: left;
+    font-weight: 900;
+    color: $main-color;
+    padding-bottom : 15px;
+    margin: 10px auto 15px;
+    border-bottom: #ccc 1px solid;
+}
+.text {
+    color: #555;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 1em;
+    text-align: inherit;
+}
+main,
+.main {
+    display: none;
+    max-width: 90%;
+    overflow: hidden;
+    text-align: left;
+    border-radius: 5px;
+    transform: scale(1);
+    background-color: #fff;
+    box-shadow: 0 10px 20px 5px rgba(50,50,50,0.5);
+    transition: all 200ms linear;
+
+    .container {
+        padding: 20px;
+        text-align: inherit;
+
+        &.active {
+            display: block;
+        }
+        &[has-button] {
+            position: relative;
+            padding-bottom: 80px !important;
+    
+            button {
+                left: 0;
+                bottom: 0;
+                position: absolute;
+                border-radius: 0 0 5px 5px;
+            }
+        }
+    }
+
+    &.active {
+        display: inline-block;
+        animation: zoomIn 150ms ease-out forwards;
+    }
+    &.hide {
+        animation-duration: 150ms;
+        animation-name: zoomOut;
+    }
+}
+
+#username {
+    max-width: 480px;
+    
+    .container {
+        padding: 20px 30px;
+    }
+    .text {
+        font-size: 22px;
+        line-height: 35px;
+    }
+    .error-box {
+        left: 30px;
+    }
+}
+#welcome {
+    width: 400px;
+
+    .text {
+        margin-bottom: 0;
+    }
+}
+#chat {
+    width: 800px;
+
+    section {
+        margin: 0;
+    }
+    .header {
+        width:100%;
+        height: 50px;
+        background-color: $main-color;
+    }
+    .container {
+        padding: 0;
+        width: 100%;
+        max-height: 400px;
+        vertical-align: top;
+        display: inline-flex;
+        height: calc(100vh - 100px);
+
+        .users,
+        .chat {
+            margin: 0;
+            height: 100%;
+        }
+    }
+    .users {
+        width: 200px;
+        flex-shrink: 0;
+        text-align: left;
+        background-color: $main-color-lightest;
+
+        .group {
+
+            &:before {
+                content: attr(group);
+                width: 100%;
+                font-size: 14px;
+                text-align: left;
+                padding: 3px 10px;
+                display: inline-block;
+                box-sizing: border-box;
+                font-variant: small-caps;
+                text-transform: lowercase;
+                color: rgba(250,250,250,0.8);
+                background-color: rgba(50,50,50,0.1);
+            }
+
+            .elements {
+                background-color: rgba(250,250,250,0.15);
+
+                .user {
+                    padding: 10px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    text-align: left;
+                    font-weight: 700;
+                    user-select: none;
+                    color: $main-color-darkest;
+                    border-bottom: rgba(50,50,50,0.2) 1px solid;
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+
+            &[group=offline] .elements .user {
+                color: $main-color;
+            }
+        }
+    }
+    .chat {
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        .chat-box,
+        .message-box {
+            margin: 0;
+            width: 100%;
+        }
+    }
+    .chat-box {
+        flex-grow: 1;
+        overflow-y: scroll;
+
+        .messages {
+            width: 100%;
+            display: inline-block;
+        }
+
+        .message {
+            width: 100%;
+            display: flex;
+            padding: 10px 15px;
+            border-bottom: #ddd 1px solid;
+
+            .username,
+            .content {
+                margin: 0;
+                text-align: left;
+            }
+            .username {
+                font-size: 14px;
+                font-weight: 700;
+                color: $main-color;
+                margin-right: 10px;
+                display: inline-block;
+
+                &:after {
+                    content: ':';
+                }
+            }
+            .content {
+                flex-grow: 1;
+                font-size: 14px;
+                display: inline-block
+            }
+        }
+    }
+    .message-box {
+        padding: 15px 18px;
+        position: relative;
+        background-color: #c0c0c0;
+
+        input {
+            border: none;
+            font-size: 14px;
+            border-radius: 5px;
+            font-variant: unset;
+            display:inline-block;
+            text-transform: unset;
+            background-color: #f0f0f0;
+            padding: 10px 70px 10px 50px;
+        }
+        .m-icon {
+            height: 37px;
+            color: #555;
+            cursor: pointer;
+            position: absolute;
+            display: inline-flex;
+            
+            &[content=tag_faces] {
+                left: 18px;
+                width: 40px;
+                font-size: 24px;
+                border-radius: 5px 0 0 5px;
+                color: $main-color-lighter;
+            }
+            &[content=send] {
+                width: 50px;
+                right: 18px;
+                font-size: 20px;
+                color: #f5f5f5;
+                border-radius: 0 5px 5px 0;
+                background-color: $main-color-lighter;
+            }
+        }
+    }
+}

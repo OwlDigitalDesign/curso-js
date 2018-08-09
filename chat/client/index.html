@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Chat</title>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script src="scripts/jquery.min.js" defer></script>
+        <script src="scripts/username.js" defer></script>
+        <script src="scripts/main.js" defer></script>
+    </head>
+    <body>
+        <main id="username">
+            <form action="#" method="post" class="container" has-button>
+                <h1>Bienvenido, viajero!</h1>
+                <div class="text">Necesitas un nombre para ser identificado y comenzar a explorar las conversaciones</div>
+                <label for="username">Elige tu nombre de usuario</label>
+                <input type="text" focus name="username" autocomplete="off">
+                <div class="error-box"></div>
+                <button send>Enviar</button>
+            </form>
+        </main>
+        <main id="welcome">
+            <div class="container loading" has-button>
+                <h1>%NOMBRE%</h1>
+                <div class="text">Recuperando información del servidor</div>
+                <button>Cargando chat</button>
+            </div>
+        </main>
+        <main id="chat">
+            <div class="header"></div>
+            <div class="container">
+                <section class="users">
+                    <div class="group" group="online">
+                        <div class="elements"></div>
+                    </div>
+                    <div class="group" group="offline">
+                        <div class="elements"></div>
+                    </div>
+                </section>
+                <div class="chat">
+                    <section class="chat-box">
+                        <div class="messages"></div>
+                    </section>
+                    <form class="message-box" action="#" method="post">
+                        <div class="m-icon" content="tag_faces"></div><input type="text" name="message" autocomplete="off" placeholder="Mensaje"><div class="m-icon send" content="send"></div>
+                        <button style="display:none;"></button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
